@@ -144,7 +144,7 @@ class Board(draw.DrawDelegate, event.MouseDelegate):
     self.pieces[new_lc] = p
 
   def handle_selected_mouse_event(self, button, state, lc):
-    # get_selected 
+    # get_selected
     selected = [(c,p) for c,p in self.pieces.iteritems() if p.state ==
         Piece.SELECTED]
     if not selected:
@@ -168,7 +168,7 @@ class Board(draw.DrawDelegate, event.MouseDelegate):
         self.screenz is None:
       return
     # convert to logical coordinate
-    wx, wy, wz = gluUnProject(x, y, self.screenz, 
+    wx, wy, wz = gluUnProject(x, y, self.screenz,
             self.modelview,
             self.projectview,
             self.viewport)

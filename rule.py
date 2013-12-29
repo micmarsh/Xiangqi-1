@@ -71,17 +71,17 @@ def general(curr_pos, board_pieces):
 def advisor(curr_pos, board_pieces):
   ''' Rule for advisor. '''
   x,y = curr_pos
-  
+
   def diagonal(x,y):
     ''' Diagonal posistions starting at (x,y) '''
     for nx in (-1,1):
       for ny in (-1,1):
         yield (x+nx, y+ny)
-  
+
   candidates = diagonal(x,y)
   candidates = (c for c in candidates if empty_or_enemy(curr_pos, c, board_pieces))
   candidates = (c for c in candidates if is_in_palace(c))
-  
+
   possible_moves = list(candidates)
 
   return possible_moves
@@ -156,16 +156,16 @@ def chariot(curr_pos, board_pieces):
     if board_pieces.get((cx,y)):
       break
     candidates.append((cx, y))
-  if is_enemy(curr_pos, (x,cy), board_pieces):
-    candidates.append((x, cy))
+  if is_enemy(curr_pos, (cx,y), board_pieces):
+    candidates.append((cx, y))
 
   cx = x-1
   for cx in range(x-1, -1, -1):
     if board_pieces.get((cx,y)):
       break
     candidates.append((cx, y))
-  if is_enemy(curr_pos, (x,cy), board_pieces):
-    candidates.append((x, cy))
+  if is_enemy(curr_pos, (cx,y), board_pieces):
+    candidates.append((cx, y))
 
   return candidates
 
